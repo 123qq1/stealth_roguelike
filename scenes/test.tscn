@@ -1,14 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bi0opxecoa83r"]
+[gd_scene load_steps=8 format=3 uid="uid://bi0opxecoa83r"]
 
 [ext_resource type="Texture2D" uid="uid://cdl7rpc1uoddv" path="res://tile_sets/Interiors_free_16x16.png" id="3_8wnqr"]
-[ext_resource type="Script" path="res://scripts/char_movement.gd" id="3_o0q3c"]
-[ext_resource type="Texture2D" uid="uid://c8bpvkade35d1" path="res://sprites/Adam_idle_16x16.png" id="4_mxlpy"]
 [ext_resource type="Texture2D" uid="uid://rmn3an0k8y1v" path="res://tile_sets/Room_Builder_free_16x16.png" id="4_puak2"]
-[ext_resource type="Texture2D" uid="uid://sduuqypx2bl" path="res://sprites/MBG Weapon Pack (2).png" id="5_kw5ee"]
-[ext_resource type="Script" path="res://scripts/look_at.gd" id="5_wq1rw"]
-[ext_resource type="Texture2D" uid="uid://dym2bkqrhmu7a" path="res://sprites/Sights-black.png" id="6_utj05"]
-[ext_resource type="Script" path="res://scripts/follow_mouse.gd" id="6_yo6et"]
-[ext_resource type="Script" path="res://scripts/weapon.gd" id="7_qn7cq"]
+[ext_resource type="Script" path="res://scripts/spawn_on_ready.gd" id="5_2qgit"]
+[ext_resource type="PackedScene" uid="uid://dsu36ga734wyr" path="res://scenes/character.tscn" id="6_ot6m0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_af3we"]
 texture = ExtResource("3_8wnqr")
@@ -4088,8 +4083,6 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_af3we")
 sources/3 = SubResource("TileSetAtlasSource_qdolk")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4oikc"]
-
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -4108,42 +4101,10 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(262172, 196610, 42, 262173, 262146, 42, 262174, 262146, 42, 262175, 262146, 42, 262176, 262146, 42, 262177, 262146, 42, 262178, 262146, 42, 262179, 262146, 42, 262180, 262146, 42, 262181, 327682, 42, 38, 458754, 51, 65574, 458754, 52, 131110, 458754, 53, 39, 655362, 51, 65575, 655362, 52, 131111, 655362, 53, 40, 524290, 51, 65576, 524290, 52, 131112, 524290, 53, 327708, 196610, 43, 327709, 262146, 43, 327710, 262146, 43, 327711, 262146, 43, 327712, 262146, 43, 327713, 262146, 43, 327714, 262146, 43, 327715, 262146, 43, 327716, 262146, 43, 327717, 327682, 43, 589852, 196610, 42, 655388, 196610, 43, 589853, 262146, 42, 655389, 262146, 43, 589854, 262146, 42, 655390, 262146, 43, 589855, 262146, 42, 655391, 262146, 43, 589856, 262146, 42, 655392, 262146, 43, 589857, 262146, 42, 655393, 262146, 43, 589858, 262146, 42, 655394, 262146, 43, 589859, 262146, 42, 655395, 262146, 43, 589860, 262146, 42, 655396, 262146, 43, 589861, 327682, 42, 655397, 327682, 43, 917532, 196610, 42, 983068, 196610, 43, 917533, 262146, 42, 983069, 262146, 43, 917534, 262146, 42, 983070, 262146, 43, 917535, 262146, 42, 983071, 262146, 43, 917536, 262146, 42, 983072, 262146, 43, 917537, 262146, 42, 983073, 262146, 43, 917538, 262146, 42, 983074, 262146, 43, 917539, 262146, 42, 983075, 262146, 43, 917540, 262146, 42, 983076, 262146, 43, 917541, 327682, 42, 983077, 327682, 43, 1245212, 196610, 42, 1310748, 196610, 43, 1245213, 262146, 42, 1310749, 262146, 43, 1245214, 262146, 42, 1310750, 262146, 43, 1245215, 262146, 42, 1310751, 262146, 43, 1245216, 262146, 42, 1310752, 262146, 43, 1245217, 262146, 42, 1310753, 262146, 43, 1245218, 262146, 42, 1310754, 262146, 43, 1245219, 262146, 42, 1310755, 262146, 43, 1245220, 262146, 42, 1310756, 262146, 43, 1245221, 327682, 42, 1310757, 327682, 43, 1572892, 196610, 42, 1638428, 196610, 43, 1572893, 262146, 42, 1638429, 262146, 43, 1572894, 262146, 42, 1638430, 262146, 43, 1572895, 262146, 42, 1638431, 262146, 43, 1572896, 262146, 42, 1638432, 262146, 43, 1572897, 262146, 42, 1638433, 262146, 43, 1572898, 262146, 42, 1638434, 262146, 43, 1572899, 262146, 42, 1638435, 262146, 43, 1572900, 262146, 42, 1638436, 262146, 43, 1572901, 327682, 42, 1638437, 327682, 43, 1966108, 196610, 42, 2031644, 196610, 43, 1966109, 262146, 42, 2031645, 262146, 43, 1966110, 262146, 42, 2031646, 262146, 43, 1966111, 262146, 42, 2031647, 262146, 43, 1966112, 262146, 42, 2031648, 262146, 43, 1966113, 262146, 42, 2031649, 262146, 43, 1966114, 262146, 42, 2031650, 262146, 43, 1966115, 262146, 42, 2031651, 262146, 43, 1966116, 262146, 42, 2031652, 262146, 43, 1966117, 327682, 42, 2031653, 327682, 43)
 metadata/_edit_group_ = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(120, 60)
-script = ExtResource("3_o0q3c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 8)
-scale = Vector2(0.8, 0.4)
-shape = SubResource("RectangleShape2D_4oikc")
-
-[node name="PlayerSprite" type="Sprite2D" parent="CharacterBody2D"]
-texture_filter = 1
-texture = ExtResource("4_mxlpy")
-region_enabled = true
-region_rect = Rect2(0, 8, 16, 24)
-
-[node name="Hand" type="Node2D" parent="CharacterBody2D" node_paths=PackedStringArray("other")]
-position = Vector2(4, 6)
-script = ExtResource("5_wq1rw")
-other = NodePath("../../Mouse")
-
-[node name="GunSprite" type="Sprite2D" parent="CharacterBody2D/Hand"]
-texture_filter = 1
-position = Vector2(5, 0)
-texture = ExtResource("5_kw5ee")
-region_enabled = true
-region_rect = Rect2(0, 30, 32, 10)
-script = ExtResource("7_qn7cq")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(374, 271)
 
-[node name="Mouse" type="Node2D" parent="."]
-script = ExtResource("6_yo6et")
-
-[node name="Sprite2D" type="Sprite2D" parent="Mouse"]
-texture_filter = 1
-texture = ExtResource("6_utj05")
-region_enabled = true
-region_rect = Rect2(32, 64, 16, 16)
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(100, 100)
+script = ExtResource("5_2qgit")
+spawn_scene = ExtResource("6_ot6m0")

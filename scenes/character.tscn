@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsu36ga734wyr"]
+
+[ext_resource type="Script" path="res://scripts/char_movement.gd" id="1_d06i1"]
+[ext_resource type="Texture2D" uid="uid://c8bpvkade35d1" path="res://sprites/Adam_idle_16x16.png" id="2_dpg0k"]
+[ext_resource type="Script" path="res://scripts/look_at.gd" id="3_17mhq"]
+[ext_resource type="Texture2D" uid="uid://sduuqypx2bl" path="res://sprites/MBG Weapon Pack (2).png" id="4_jen8u"]
+[ext_resource type="Script" path="res://scripts/weapon.gd" id="5_urdcd"]
+[ext_resource type="Script" path="res://scripts/follow_mouse.gd" id="6_fubyk"]
+[ext_resource type="Texture2D" uid="uid://dym2bkqrhmu7a" path="res://sprites/Sights-black.png" id="7_gtpqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4oikc"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(120, 60)
+script = ExtResource("1_d06i1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+scale = Vector2(0.8, 0.4)
+shape = SubResource("RectangleShape2D_4oikc")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_dpg0k")
+region_enabled = true
+region_rect = Rect2(0, 8, 16, 24)
+
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("other")]
+position = Vector2(4, 6)
+script = ExtResource("3_17mhq")
+other = NodePath("../Mouse")
+
+[node name="GunSprite" type="Sprite2D" parent="Hand"]
+texture_filter = 1
+position = Vector2(5, 0)
+texture = ExtResource("4_jen8u")
+region_enabled = true
+region_rect = Rect2(0, 30, 32, 10)
+script = ExtResource("5_urdcd")
+
+[node name="Mouse" type="Node2D" parent="."]
+script = ExtResource("6_fubyk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Mouse"]
+texture_filter = 1
+texture = ExtResource("7_gtpqq")
+region_enabled = true
+region_rect = Rect2(32, 64, 16, 16)
